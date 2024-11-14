@@ -1,0 +1,327 @@
+[
+    {
+      "id": 1,
+      "name": "Push-ups",
+      "category": "Strength",
+      "difficulty": "Beginner",
+      "targetMuscles": ["Chest", "Shoulders", "Triceps"],
+      "description": "Push-ups are a fundamental strength training exercise that work the chest, shoulders, and triceps muscles. Start in a high plank position, with your hands shoulder-width apart. Lower your body until your chest nearly touches the ground, then push back up to the starting position.",
+      "steps": [
+        "Start in a high plank position with your hands placed slightly wider than shoulder-width apart.",
+        "Engage your core and keep your body straight from head to heels.",
+        "Bend your elbows to lower your body toward the ground.",
+        "Stop when your chest nearly touches the floor, then push through your palms to return to the starting position."
+      ],
+      "benefits": [
+        "Strengthens upper body muscles (chest, shoulders, triceps)",
+        "Improves core stability",
+        "Can be modified for all fitness levels"
+      ],
+      "modifications": [
+        "Knee push-ups (for beginners)",
+        "Elevated push-ups (for more advanced)"
+      ],
+      "tips": [
+        "Keep your back flat and avoid sagging your hips.",
+        "Breathe out as you push up and breathe in as you lower your body."
+      ],
+      "commonMistakes": [
+        "Letting your hips sag or rise too high",
+        "Not keeping your hands in line with your shoulders"
+      ],
+      "estimatedCaloriesBurned": 5,
+      "sets": 3,
+      "reps": 10,
+      "restTime": "30 seconds",
+      "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "imageUrl": "https://images.unsplash.com/photo-1485727749690-d091e8284ef3?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "relatedExercises": [
+        "Incline Push-ups",
+        "Decline Push-ups"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Squats",
+      "category": "Strength",
+      "difficulty": "Beginner",
+      "targetMuscles": ["Quadriceps", "Glutes", "Hamstrings"],
+      "description": "Squats are a compound exercise that target the major muscle groups of the lower body. Stand with your feet shoulder-width apart, send your hips back, and bend your knees to lower into a squat. Drive through your heels to return to the starting position.",
+      "steps": [
+        "Stand with your feet shoulder-width apart, keeping your chest up and shoulders back.",
+        "Send your hips back and bend your knees to lower into a squat, keeping your knees behind your toes.",
+        "Lower down until your thighs are parallel to the ground, then press through your heels to stand back up."
+      ],
+      "benefits": [
+        "Strengthens lower body (quadriceps, glutes, hamstrings)",
+        "Improves balance and flexibility",
+        "Increases overall body strength and endurance"
+      ],
+      "modifications": [
+        "Bodyweight squats (beginner)",
+        "Goblet squats (using a dumbbell or kettlebell for added resistance)"
+      ],
+      "tips": [
+        "Push your hips back rather than letting your knees go forward.",
+        "Keep your chest up and your back straight throughout the movement."
+      ],
+      "commonMistakes": [
+        "Knees caving inward during the squat",
+        "Leaning too far forward with your upper body"
+      ],
+      "estimatedCaloriesBurned": 8,
+      "sets": 3,
+      "reps": 12,
+      "restTime": "30 seconds",
+      "videoUrl": "https://example.com/squats-video",
+      "imageUrl": "https://images.unsplash.com/photo-1731223834316-5875db2d781f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "relatedExercises": [
+        "Lunges",
+        "Leg Press"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Lunges",
+      "category": "Strength",
+      "difficulty": "Beginner",
+      "targetMuscles": ["Quadriceps", "Glutes", "Hamstrings"],
+      "description": "Lunges are a powerful lower-body exercise that works the quads, glutes, and hamstrings. Take a step forward, lower your hips until both knees are bent at a 90-degree angle, then push back up to the starting position.",
+      "steps": [
+        "Start by standing tall with your feet together.",
+        "Take a step forward with one leg and lower your hips until both knees are at 90 degrees.",
+        "Push through your front heel to return to the starting position.",
+        "Repeat on the other leg."
+      ],
+      "benefits": [
+        "Strengthens the legs and glutes",
+        "Improves balance and coordination",
+        "Targets multiple lower body muscles"
+      ],
+      "modifications": [
+        "Bodyweight lunges (beginner)",
+        "Weighted lunges (with dumbbells for added resistance)"
+      ],
+      "tips": [
+        "Keep your back straight and chest up.",
+        "Ensure your front knee doesn’t go beyond your toes."
+      ],
+      "commonMistakes": [
+        "Letting the knee of the forward leg extend past the toes",
+        "Not keeping the torso upright"
+      ],
+      "estimatedCaloriesBurned": 6,
+      "sets": 3,
+      "reps": 12,
+      "restTime": "30 seconds",
+      "videoUrl": "https://example.com/lunges-video",
+      "imageUrl": "https://hips.hearstapps.com/hmg-prod/images/walking-lunge-6401e3ab937d2.jpg?resize=980:*",
+      "relatedExercises": [
+        "Bulgarian Split Squats",
+        "Step-ups"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Plank",
+      "category": "Core",
+      "difficulty": "Beginner",
+      "targetMuscles": ["Core", "Shoulders", "Back"],
+      "description": "The plank is a core-strengthening exercise that helps engage multiple muscle groups. Hold a push-up position with your body straight and supported by your arms and toes.",
+      "steps": [
+        "Start in a push-up position with your arms straight and your body in a straight line.",
+        "Engage your core and keep your body straight from head to heels.",
+        "Hold the position for as long as you can while maintaining proper form."
+      ],
+      "benefits": [
+        "Strengthens core muscles",
+        "Improves posture and stability",
+        "Engages the shoulders and back"
+      ],
+      "modifications": [
+        "Knee planks (for beginners)",
+        "Side planks (to target obliques)"
+      ],
+      "tips": [
+        "Keep your back straight, avoid letting your hips sag.",
+        "Keep your hands directly under your shoulders."
+      ],
+      "commonMistakes": [
+        "Letting your hips sag towards the ground",
+        "Not engaging the core fully"
+      ],
+      "estimatedCaloriesBurned": 4,
+      "sets": 3,
+      "reps": "Hold for 30 seconds",
+      "restTime": "30 seconds",
+      "videoUrl": "https://example.com/plank-video",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSry2BfvkC1yalItPT88ZTHq4mu1SxEaHqwPA&s",
+      "relatedExercises": [
+        "Side Plank",
+        "Russian Twists"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Burpees",
+      "category": "Full Body",
+      "difficulty": "Intermediate",
+      "targetMuscles": ["Chest", "Arms", "Core", "Legs"],
+      "description": "Burpees are a high-intensity exercise that works the entire body, combining a squat, push-up, and jump. It increases cardiovascular fitness and strength.",
+      "steps": [
+        "Start in a standing position.",
+        "Drop into a squat, place your hands on the ground, and kick your feet back into a push-up position.",
+        "Perform a push-up, then jump your feet back toward your hands.",
+        "Explode into a jump, reaching your hands overhead, and land softly."
+      ],
+      "benefits": [
+        "Improves cardiovascular fitness",
+        "Strengthens full-body muscles",
+        "Increases endurance and explosiveness"
+      ],
+      "modifications": [
+        "Half burpees (no push-up or jump)",
+        "Box jumps instead of jump burpees"
+      ],
+      "tips": [
+        "Engage your core throughout the movement.",
+        "Land softly during the jump."
+      ],
+      "commonMistakes": [
+        "Not maintaining a straight body during the push-up",
+        "Jumping too high or landing too hard"
+      ],
+      "estimatedCaloriesBurned": 10,
+      "sets": 3,
+      "reps": 10,
+      "restTime": "45 seconds",
+      "videoUrl": "https://example.com/burpees-video",
+      "imageUrl": "https://images.healthshots.com/healthshots/en/uploads/2023/03/16013822/Burpees.jpg",
+      "relatedExercises": [
+        "Mountain Climbers",
+        "Jumping Jacks"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Deadlifts",
+      "category": "Strength",
+      "difficulty": "Intermediate",
+      "targetMuscles": ["Hamstrings", "Glutes", "Back", "Core"],
+      "description": "The deadlift is a powerful strength exercise that targets the posterior chain, including the hamstrings, glutes, back, and core. It involves lifting a barbell from the ground to hip height.",
+      "steps": [
+        "Stand with your feet hip-width apart, with a barbell in front of you.",
+        "Bend at your hips and knees, gripping the bar with both hands.",
+        "Keeping your chest up and back flat, drive through your heels to lift the barbell to hip height.",
+        "Lower the bar back to the ground with control."
+      ],
+      "benefits": [
+        "Strengthens posterior chain muscles",
+        "Improves posture and balance",
+        "Increases overall strength"
+      ],
+      "modifications": [
+        "Dumbbell deadlifts (for beginners)",
+        "Romanian deadlifts (with a slight bend in the knees)"
+      ],
+      "tips": [
+        "Keep the bar close to your body during the lift.",
+        "Engage your core and glutes as you lift."
+      ],
+      "commonMistakes": [
+        "Rounding the back during the lift",
+        "Using the lower back to lift instead of the legs and hips"
+      ],
+      "estimatedCaloriesBurned": 12,
+      "sets": 3,
+      "reps": 8,
+      "restTime": "45 seconds",
+      "videoUrl": "https://example.com/deadlifts-video",
+      "imageUrl": "https://blogscdn.thehut.net/wp-content/uploads/sites/495/2018/10/25171220/Blog-Deadlifting-Male_1800x672_1200x672_acf_cropped.jpg",
+      "relatedExercises": [
+        "Romanian Deadlifts",
+        "Sumo Deadlifts"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Mountain Climbers",
+      "category": "Full Body",
+      "difficulty": "Intermediate",
+      "targetMuscles": ["Core", "Shoulders", "Arms", "Legs"],
+      "description": "Mountain climbers are a cardio and strength exercise that engages multiple muscle groups while also improving coordination and endurance.",
+      "steps": [
+        "Start in a plank position with your hands directly under your shoulders.",
+        "Drive one knee toward your chest, then quickly switch legs.",
+        "Continue alternating legs at a fast pace."
+      ],
+      "benefits": [
+        "Improves cardiovascular endurance",
+        "Strengthens the core, shoulders, and legs",
+        "Increases coordination and agility"
+      ],
+      "modifications": [
+        "Slow mountain climbers (beginner)",
+        "Mountain climbers with a slider for more intensity"
+      ],
+      "tips": [
+        "Maintain a neutral spine throughout the exercise.",
+        "Keep your hips level and avoid raising them too high."
+      ],
+      "commonMistakes": [
+        "Letting the hips sag",
+        "Not keeping the core engaged"
+      ],
+      "estimatedCaloriesBurned": 7,
+      "sets": 3,
+      "reps": 20,
+      "restTime": "30 seconds",
+      "videoUrl": "https://example.com/mountain-climbers-video",
+      "imageUrl": "https://www.verywellfit.com/thmb/QT4phienUCtErxCGntR7orxvbzU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MountainClimbers_annotated-cba5a34ab0bb4c54b0a6bbaf0ed6d101.jpg",
+      "relatedExercises": [
+        "High Knees",
+        "Jumping Jacks"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Jumping Jacks",
+      "category": "Cardio",
+      "difficulty": "Beginner",
+      "targetMuscles": ["Full Body"],
+      "description": "Jumping Jacks are a simple, full-body exercise that helps increase heart rate and improves cardiovascular health.",
+      "steps": [
+        "Stand with your feet together and arms at your sides.",
+        "Jump your feet out while raising your arms overhead.",
+        "Quickly return to the starting position and repeat."
+      ],
+      "benefits": [
+        "Increases cardiovascular endurance",
+        "Works the full body",
+        "Improves coordination"
+      ],
+      "modifications": [
+        "Low-impact jumping jacks (step out rather than jump)",
+        "Add a squat when landing for more intensity"
+      ],
+      "tips": [
+        "Land softly on your feet to reduce impact.",
+        "Keep your arms straight as you raise them."
+      ],
+      "commonMistakes": [
+        "Jumping too high",
+        "Letting the arms flop rather than controlled movement"
+      ],
+      "estimatedCaloriesBurned": 5,
+      "sets": 3,
+      "reps": 30,
+      "restTime": "30 seconds",
+      "videoUrl": "https://example.com/jumping-jacks-video",
+      "imageUrl": "https://thumbs.dreamstime.com/b/guy-doing-jumping-jacks-home-workout-exercise-diagram-athletic-man-star-jumps-fitness-illustration-guy-doing-jumping-jacks-home-220367480.jpg",
+      "relatedExercises": [
+        "Jump Rope",
+        "High Knees"
+      ]
+    }
+  ]
+  

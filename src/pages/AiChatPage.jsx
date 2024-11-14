@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const AiChatPage = () => {
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hello! I'm your AI fitness assistant. How can I help you today?", sender: 'ai' }
+    { id: 1, text: "Hello! I'm your fitness assistant. I'm here to help with exercise, workouts, and fitness tips. How can I assist you today?", sender: 'ai' }
   ]);
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
@@ -15,20 +15,42 @@ const AiChatPage = () => {
 
   useEffect(scrollToBottom, [messages]);
 
+  // Function to check if response is fitness-related
+  const isFitnessRelated = (text) => {
+    const fitnessKeywords = ["exercise", "workout", "fitness", "strength", "training", "diet", "nutrition", "cardio", "muscle", "weight loss", "bodybuilding"];
+    return fitnessKeywords.some(keyword => text.toLowerCase().includes(keyword));
+  };
+
   const handleSend = async (e) => {
     e.preventDefault();
     if (input.trim()) {
-      const newMessage = { id: messages.length + 1, text: input, sender: 'user' };
-      setMessages([...messages, newMessage]);
+      const newUserMessage = { id: messages.length + 1, text: input, sender: 'user' };
+      setMessages([...messages, newUserMessage]);
       setInput('');
 
       try {
-        const response = await axios.post('/api/chat', { message: input });
-        const aiResponse = { id: messages.length + 2, text: response.data.response, sender: 'ai' };
+        // Send the user's message to the AI API
+        const response = await axios.post('http://localhost:3000/api/chat', {
+          message: `This is a fitness-focused chatbot. Only provide information related to exercise, workouts, fitness plans, and nutrition. ${input}`
+        });
+
+        let aiResponseText = response.data.response.replace(/[*_]/g, ''); // Removes stars and underscores
+
+        // Check if AI response is fitness-related
+        if (!isFitnessRelated(aiResponseText)) {
+          aiResponseText = "I'm here to assist with fitness and exercise topics only. Please ask something related to workouts, diet, or fitness plans.";
+        }
+
+        const aiResponse = { id: messages.length + 2, text: aiResponseText, sender: 'ai' };
         setMessages(prevMessages => [...prevMessages, aiResponse]);
+
       } catch (error) {
         console.error('Error communicating with AI:', error);
-        const aiResponse = { id: messages.length + 2, text: "I'm sorry, I'm having trouble communicating with the AI right now. Please try again later.", sender: 'ai' };
+        const aiResponse = {
+          id: messages.length + 2,
+          text: "I'm sorry, I'm having trouble communicating with the AI right now. Please try again later.",
+          sender: 'ai'
+        };
         setMessages(prevMessages => [...prevMessages, aiResponse]);
       }
     }
@@ -61,7 +83,7 @@ const AiChatPage = () => {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your message..."
+          placeholder="Type your fitness question..."
           className="flex-1 p-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button type="submit" className="bg-blue-500 text-white p-2 rounded-r-lg hover:bg-blue-600 transition duration-300">
