@@ -14,6 +14,11 @@ app.use(bodyParser.json());
 // Initialize the Gemini API client
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
+// Clean up the output by removing unwanted characters like asterisks
+const cleanOutput = (data) => {
+  return data.replace(/\*/g, '').trim();
+};
+
 // Endpoint to receive form data and generate a fitness plan
 app.post('/api/generate-plan', async (req, res) => {
   const { age, weight, height, goals } = req.body;
@@ -46,9 +51,6 @@ app.post('/api/generate-plan', async (req, res) => {
 
     // Parse the generated plan to JSON
     const parsedPlan = JSON.parse(generatedPlan);
-
-    // Clean up the output by removing asterisks and other unwanted characters
-    const cleanOutput = (data) => data.replace(/\*/g, '').trim();
 
     // Check if the expected structure exists
     if (parsedPlan && parsedPlan.Exercise && parsedPlan.Exercise.data &&

@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { Download } from 'lucide-react';
+import React, { useState, useRef } from "react";
+import { Download } from "lucide-react";
+import { supabase } from "../supabaseClient"; // Ensure correct import
 
 const FitnessPlanForm = () => {
   const [formData, setFormData] = useState({
@@ -7,12 +8,14 @@ const FitnessPlanForm = () => {
     weight: '',
     height: '',
     goals: '',
+    generatedKey: '' // Added field for key
   });
   const [plan, setPlan] = useState(null);
   const [error, setError] = useState(null);
   const [downloading, setDownloading] = useState(false);
-  const [loading, setLoading] = useState(false);  // Loading state for animation
+  const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState([]);
+  const [keyError, setKeyError] = useState(null); // Error for key retrieval
   const planRef = useRef(null);
 
   const handleChange = (e) => {
@@ -25,22 +28,22 @@ const FitnessPlanForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { age, weight, height, goals } = formData;
-
-    if (!age || !weight || !height || !goals) {
-      setError("Please fill out all fields.");
+    const { age, weight, height, goals, generatedKey } = formData;
+  
+    if (!age || !weight || !height || !goals || !generatedKey) {
+      setError("Please fill out all fields, including the generated key.");
       return;
     }
-
+  
     const jsonData = {
       age: parseInt(age),
       weight: parseFloat(weight),
       height: parseFloat(height),
       goals: goals,
     };
-
-    setLoading(true);  // Start loading animation
-
+  
+    setLoading(true);
+  
     try {
       const response = await fetch('http://localhost:5000/api/generate-plan', {
         method: 'POST',
@@ -49,22 +52,34 @@ const FitnessPlanForm = () => {
         },
         body: JSON.stringify(jsonData),
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to fetch the plan');
       }
-
+  
       const data = await response.json();
       setPlan(data);
-      setHistory([...history, data]);
-      setError(null);
+  
+      // Store the generated plan in Supabase without checking for existing key
+      const { error } = await supabase
+        .from('fitness_plans')
+        .insert([{ generated_key: generatedKey, plan_data: data }]);
+  
+      if (error) {
+        setError('Failed to store the plan in the database.');
+        console.error('Supabase Insert Error:', error);
+      } else {
+        setHistory([...history, data]);
+        setError(null);
+      }
     } catch (error) {
       setError('Error generating fitness plan. Please try again.');
       console.error('Error:', error);
     } finally {
-      setLoading(false);  // Stop loading animation
+      setLoading(false);
     }
   };
+  
 
   const handleDownloadPDF = async () => {
     if (!plan || !planRef.current) return;
@@ -92,8 +107,38 @@ const FitnessPlanForm = () => {
     }
   };
 
+  const handleRetrieveHistory = async () => {
+    const { generatedKey } = formData;
+
+    if (!generatedKey) {
+      setKeyError("Please enter a valid generated key.");
+      return;
+    }
+
+    // Fetch fitness plans based on the entered generated key
+    const { data, error } = await supabase
+      .from('fitness_plans')
+      .select('plan_data')
+      .eq('generated_key', generatedKey);
+
+    if (error) {
+      setKeyError("Failed to retrieve plan history.");
+      console.error('Supabase Select Error:', error);
+      return;
+    }
+
+    if (data.length === 0) {
+      setKeyError("No plans found for this key.");
+      return;
+    }
+
+    // Display the fetched plans
+    setHistory(data.map(item => item.plan_data));
+    setKeyError(null);
+  };
+
   return (
-    <div className="max-w-5xl mx-auto p-4 bg-white shadow-md rounded-md flex gap-6">
+    <div className="w-full mx-auto p-4 bg-white shadow-md rounded-md flex gap-6">
       {/* Main Form and Plan Section */}
       <div className="flex-1">
         <h2 className="text-2xl font-bold mb-4">Generate Your Fitness Plan</h2>
@@ -150,6 +195,18 @@ const FitnessPlanForm = () => {
             </div>
           </div>
 
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">Generated Key</label>
+            <input
+              type="text"
+              name="generatedKey"
+              value={formData.generatedKey}
+              onChange={handleChange}
+              className="w-full p-2 border rounded"
+              required
+            />
+          </div>
+
           <button
             type="submit"
             className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-200 flex items-center justify-center gap-2"
@@ -178,41 +235,58 @@ const FitnessPlanForm = () => {
                 <h4 className="text-lg font-medium mb-2">Diet Plan:</h4>
                 <p className="whitespace-pre-wrap">{plan.diet}</p>
               </div>
-              <div>
+              <div className="mb-4">
                 <h4 className="text-lg font-medium mb-2">Recommendations:</h4>
                 <p className="whitespace-pre-wrap">{plan.recommendations}</p>
               </div>
-            </div>
 
-            <button
-              onClick={handleDownloadPDF}
-              disabled={downloading}
-              className="mt-4 w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-200 flex items-center justify-center gap-2 disabled:bg-blue-300"
-            >
-              <Download size={20} />
-              {downloading ? 'Generating PDF...' : 'Download Plan as PDF'}
-            </button>
+              <button
+                onClick={handleDownloadPDF}
+                className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-200 flex items-center justify-center gap-2"
+                disabled={downloading}
+              >
+                {downloading ? 'Downloading...' : <><Download size={20} /> Download as PDF</>}
+              </button>
+            </div>
           </>
         )}
       </div>
 
       {/* History Section */}
-      <div className="w-1/3 bg-gray-100 p-4 rounded-md shadow-inner">
-        <h3 className="text-xl font-bold mb-4">Plan History</h3>
-        {history.length === 0 ? (
-          <p className="text-gray-600">No history available.</p>
-        ) : (
-          <ul className="space-y-4">
-            {history.map((item, index) => (
-              <li key={index} className="bg-white p-3 rounded shadow">
-                <h4 className="font-semibold">Plan {index + 1}</h4>
-                <p className="text-sm"><strong>Exercise:</strong> {item.exercise}</p>
-                <p className="text-sm"><strong>Diet:</strong> {item.diet}</p>
-                <p className="text-sm"><strong>Recommendations:</strong> {item.recommendations}</p>
-              </li>
-            ))}
-          </ul>
+      <div className="flex-1">
+        <h2 className="text-2xl font-bold mb-4">Your Plan History</h2>
+        <div className="mb-4">
+          <button
+            onClick={handleRetrieveHistory}
+            className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 transition duration-200"
+          >
+            Retrieve Plan History
+          </button>
+        </div>
+
+        {keyError && (
+          <p className="mt-4 text-red-500 font-medium">{keyError}</p>
         )}
+
+        <div>
+          {history.length > 0 && history.map((plan, index) => (
+            <div key={index} className="mb-6 p-4 border rounded bg-gray-100">
+              <h3 className="text-xl font-semibold">Plan {index + 1}</h3>
+              <div className="mb-4">
+                <h4 className="text-lg font-medium mb-2">Exercise Plan:</h4>
+                <p className="whitespace-pre-wrap">{plan.exercise}</p>
+              </div>
+              <div className="mb-4">
+                <h4 className="text-lg font-medium mb-2">Diet Plan:</h4>
+                <p className="whitespace-pre-wrap">{plan.diet}</p>
+              </div>
+              <div className="mb-4">
+                <h4 className="text-lg font-medium mb-2">Recommendations:</h4>
+                <p className="whitespace-pre-wrap">{plan.recommendations}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

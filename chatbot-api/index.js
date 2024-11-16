@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Define the generation configuration and safety settings
 const GENERATION_CONFIG = {
-    temperature: 0.9,
+    temperature: 0.7,
     topK: 1,
     topP: 1,
     maxOutputTokens: 2048,
@@ -26,8 +26,8 @@ const SAFETY_SETTINGS = [
 ];
 
 // Set your API key and model name directly here
-const API_KEY = 'AIzaSyAA0dX9uRrRy5kBQ1Zp5zhKd4610lP1Sj0'; // Replace with your actual Gemini API key
-const MODEL_NAME = 'gemini-1.5-flash'; // Replace with your model name
+const API_KEY = 'AIzaSyDlq3j-64qT0hdUVQu669dIAFNBxp0nVfI'; // Replace with your actual Gemini API key
+const MODEL_NAME = 'gemini-1.5-pro'; // Replace with your model name
 
 // Function to initialize and run the AI chat
 const getAiResponse = async (userMessage) => {

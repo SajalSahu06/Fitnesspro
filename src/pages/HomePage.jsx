@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { Home, Dumbbell, Users, MessageCircle, Menu, X } from 'lucide-react';
 import './homepage.css';
+import GetKey from '../components/GetKey';
+
 
 // Import components
 import CommunityPage from './CommunityPage';
@@ -59,17 +61,7 @@ const HomePage = () => {
                 <span className="text-sm font-medium">{item.label}</span>
               </Link>
             ))}
-            {/* Add "Get Key" button to Sidebar */}
-<div className="px-4 py-2 border-t border-blue-700">
-  <Link
-    to="/login"
-    className="flex items-center px-4 py-3 text-gray-100 hover:bg-blue-700 rounded-lg transition-colors duration-200"
-    onClick={() => setIsSidebarOpen(false)}
-  >
-    <span className="mr-4">🔑</span>
-    <span className="text-sm font-medium">Get Key</span>
-  </Link>
-</div>
+           <GetKey/>
           </div>
 
           <div className="px-4 py-2 border-t border-blue-700">
@@ -78,12 +70,10 @@ const HomePage = () => {
         </nav>
 
         {/* Main content */}
-<div className="flex-1 flex flex-col overflow-hidden">
+<div className="flex-1 flex flex-col overflow-auto">
 <main 
   className="flex-1 overflow-x-hidden overflow-y-auto bg-cover bg-center"
-  style={{
-    backgroundImage: `url('https://images.pexels.com/photos/7565610/pexels-photo-7565610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
-  }}
+  
 >
     <div className="container mx-auto">
       <Routes>
