@@ -27,7 +27,7 @@ const FitnessPlanGenerator = () => {
         setPlan('');
 
         try {
-            const response = await fetch('http://localhost:5000/generate-fitness-plan', {
+            const response = await fetch('https://fitnesspro-backend-1.onrender.com/generate-fitness-plan', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
