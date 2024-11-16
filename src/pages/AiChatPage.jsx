@@ -30,7 +30,7 @@ const AiChatPage = () => {
 
       try {
         // Send the user's message to the AI API
-        const response = await axios.post('http://localhost:3000/api/chat', {
+        const response = await axios.post('https://fitnesspro-back-2.onrender.com/api/chat', {
           message: `This is a fitness-focused chatbot. Only provide information related to exercise, workouts, fitness plans, and nutrition. ${input}`
         });
 
