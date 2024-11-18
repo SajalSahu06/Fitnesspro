@@ -11,7 +11,7 @@ import ExploreExercisesPage from './ExploreExercisesPage';
 import AiChatPage from './AiChatPage';
 import FitnessPlanForm from '../components/FitnessPlanForm';
 import FitnessTrackingPage from './FitnessTrackingPage';  
-import LoginPage from '../components/Loginpage';
+import LoginPage from '../components/LoginPage';
 
 const HomePage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
